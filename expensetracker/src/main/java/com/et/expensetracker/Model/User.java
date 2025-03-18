@@ -14,6 +14,10 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private int balance;
+
+
+
     @OneToMany
     @JoinColumn(name="expenses")
     private List<Expense> expenses;
@@ -50,6 +54,21 @@ public class User {
         return password;
     }
 
+    public void setBalance(int balance){
+        this.balance=balance;
+    }
+
+    public int getBalance(){
+        return balance;
+    }
+
+    public List<Expense> getExpenses() {
+        return expenses;
+    }
+
+    public void setExpenses(List<Expense> expenses) {
+        this.expenses = expenses;
+    }
 }
 
 
