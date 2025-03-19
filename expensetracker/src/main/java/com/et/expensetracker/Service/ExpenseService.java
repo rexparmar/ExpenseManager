@@ -42,4 +42,20 @@ public class ExpenseService {
     public List<Expense> getExpensesByUserId(Long userId) throws Exception{
         return repo.findAllByUserId(userId);
     }
+
+    public Expense updateExpense(Long id ,Expense expense){
+        Expense existingExpense = repo.getById(id);
+        existingExpense.setDate(LocalDate.now());
+        existingExpense.setAmount(existingExpense.getAmount());
+        existingExpense.setPayee(expense.getPayee());
+        existingExpense.setDescription(expense.getDescription());
+        existingExpense.setId(existingExpense.getId());
+        existingExpense.setUser(existingExpense.getUser());
+        existingExpense.setDate(LocalDate.now());
+        return repo.save(existingExpense);
+    }
+
+    public Optional<Expense> getExpenseById(Long id){
+        return repo.findById(id);
+    }
 }
